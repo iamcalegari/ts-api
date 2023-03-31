@@ -1,9 +1,9 @@
 export interface IProperty {
-  bsontype: String;
-  description: String;
+  bsontype: string;
+  description: string;
   properties?: IProperties;
-  required?: Array<String>;
-  enum?: Array<String>;
+  required?: Array<string>;
+  enum?: Array<string>;
 }
 
 interface IProperties {
@@ -11,15 +11,15 @@ interface IProperties {
 }
 
 export interface ISchema {
-  bsonType: String;
+  bsonType: string;
   properties: IProperties;
-  required: Array<String>;
+  required: Array<string>;
 }
 
 export interface IJsonSchema {
-  bsonType: String;
+  bsonType: string;
   properties: IProperties;
-  required: Array<String>;
+  required: Array<string>;
 }
 
 export interface IValidador {
@@ -27,5 +27,7 @@ export interface IValidador {
 }
 
 export interface IMongoSchema {
+  validationAction: string;
+  validationLevel: string;
   validator: IValidador;
 }
