@@ -1,5 +1,5 @@
-import * as user from "./user";
+import user from "./user";
 
-export const services = {
+export default {
   user,
 };

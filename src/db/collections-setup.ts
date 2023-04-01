@@ -8,6 +8,7 @@ export const collectionsSetup = async () => {
   const modelArray = modelMap.values();
 
   for (const model of modelArray) {
+    console.log("🚀🚀🚀🚀 model: ", model);
     await setValidators(db, model);
 
     await setIndexes();

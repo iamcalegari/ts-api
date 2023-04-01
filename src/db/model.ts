@@ -128,7 +128,8 @@ export const modelHandler = {
       );
     }
     console.log(...arguments);
-    // eslint-disable-next-line prefer-rest-params
+
+    // @ts-ignore: ts(2556)
     return Reflect.get(...arguments);
   },
 };
@@ -151,8 +152,8 @@ export const model = ({
   const newModel = new Model(
     collectionName,
     documentSchema,
-    documentIndexes,
-    allowedMethods
+    allowedMethods,
+    documentIndexes
   );
 
   const newModelProxy = new Proxy(newModel, modelHandler);

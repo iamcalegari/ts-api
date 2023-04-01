@@ -37,7 +37,7 @@ export const objectId = (objId?: string) => {
   return new ObjectId(objId);
 };
 
-export const getDb = () => {
+export const getDb = (): Db => {
   return db;
 };
 
