@@ -6,9 +6,16 @@ export const schemaBuilder = (schema: ISchema): IMongoSchema => {
     validationLevel: "strict",
     validator: {
       $jsonSchema: {
-        bsonType: schema.bsonType,
-        properties: schema.properties,
-        required: schema.required,
+        additionalProperties: false,
+        bsonType: "object",
+        properties: {
+          ...schema.properties,
+          _id: {
+            bsonType: "objectId",
+            description: "Identificador único do registro no MongoDB",
+          },
+        },
+        required: [...schema.required],
       },
     },
   };

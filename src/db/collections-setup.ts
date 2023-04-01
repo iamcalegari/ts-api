@@ -8,7 +8,6 @@ export const collectionsSetup = async () => {
   const modelArray = modelMap.values();
 
   for (const model of modelArray) {
-    console.log("🚀🚀🚀🚀 model: ", model);
     await setValidators(db, model);
 
     await setIndexes();
@@ -20,7 +19,7 @@ const setValidators = async (db: Db, model: Model) => {
 
   await db.command({
     collMod: model.collectionName,
-    ...model.validator,
+    validator: { ...model.validator },
   });
 };
 

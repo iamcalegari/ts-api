@@ -1,5 +1,5 @@
 export interface IProperty {
-  bsontype: string;
+  bsonType: string;
   description: string;
   properties?: IProperties;
   required?: Array<string>;
@@ -17,6 +17,7 @@ export interface ISchema {
 }
 
 export interface IJsonSchema {
+  additionalProperties: boolean;
   bsonType: string;
   properties: IProperties;
   required: Array<string>;

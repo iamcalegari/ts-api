@@ -5,15 +5,15 @@ const documentSchema: ISchema = {
   bsonType: "object",
   properties: {
     nome: {
-      bsontype: "string",
+      bsonType: "string",
       description: "Nome do usuário.",
     },
     idade: {
-      bsontype: "number",
+      bsonType: "number",
       description: "Idade do usuário",
     },
     email: {
-      bsontype: "string",
+      bsonType: "string",
       description: "Email do usuário",
     },
   },

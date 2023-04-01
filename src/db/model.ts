@@ -127,10 +127,14 @@ export const modelHandler = {
         `o método [${prop}] não está disponível para essa collection.`
       );
     }
-    console.log(...arguments);
 
-    // @ts-ignore: ts(2556)
-    return Reflect.get(...arguments);
+    const args: [Model, string, Model] = [
+      arguments[0],
+      arguments[1],
+      arguments[2],
+    ];
+
+    return Reflect.get(...args);
   },
 };
 
