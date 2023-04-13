@@ -1,7 +1,9 @@
-import { ISchema } from "../global";
+import { Type, Static, TSchema } from "@sinclair/typebox";
+import { TypeSystem } from "@sinclair/typebox/system";
+import { IProperty, ISchema } from "../global";
 import { schemaBuilder } from "./helpers/builders";
 
-const documentSchema: ISchema = {
+export const documentSchema: ISchema = {
   bsonType: "object",
   properties: {
     nome: {
@@ -19,5 +21,31 @@ const documentSchema: ISchema = {
   },
   required: ["nome", "idade", "email"],
 };
+
+// interface IDocument {}
+const fn = () => {
+  const props = [];
+  for (const [name, { bsonType }] of Object.entries(
+    documentSchema.properties
+  )) {
+    if (documentSchema.required.includes(name)) {
+      props.push(
+        Type.Object({
+          [name]: Type.Symbol({ title: bsonType }),
+        })
+      );
+    } else {
+      props.push(
+        Type.Object({
+          [name]: Type.Optional(Type.Symbol({ title: bsonType })),
+        })
+      );
+    }
+  }
+
+  return Type.Composite(props);
+};
+
+export const docType = fn();
 
 export const userSchema = schemaBuilder(documentSchema);

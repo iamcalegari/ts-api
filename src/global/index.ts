@@ -1,3 +1,4 @@
+// ++++++ MongoDB schemas ++++++
 export interface IProperty {
   bsonType: string;
   description: string;
@@ -10,7 +11,7 @@ interface IProperties {
   [key: string]: IProperty;
 }
 
-export interface ISchema {
+export interface ISchema extends Object {
   bsonType: string;
   properties: IProperties;
   required: Array<string>;
@@ -32,3 +33,4 @@ export interface IMongoSchema {
   validationLevel: string;
   validator: IValidador;
 }
+// ++++++ MongoDB schemas ++++++
