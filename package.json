@@ -19,6 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
+    "@fastify/jwt": "^7.0.0",
+    "@fastify/request-context": "^4.2.0",
     "@fastify/sensible": "^5.0.0",
     "@sinclair/typebox": "^0.26.8",
     "@types/bcrypt": "^5.0.0",
@@ -27,10 +29,10 @@
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
-    "fastify-request-context": "^2.3.0",
     "mongodb": "^5.1.0"
   },
   "devDependencies": {
+    "@types/fastify-jwt": "^0.8.1",
     "@types/node": "^18.0.0",
     "@types/tap": "^15.0.5",
     "concurrently": "^7.0.0",

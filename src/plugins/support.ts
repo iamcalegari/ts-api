@@ -1,6 +1,7 @@
 import fp from "fastify-plugin";
-
+import fastifyJwt from "@fastify/jwt";
 import services from "../services";
+import { fastifyRequestContext } from "@fastify/request-context";
 
 export interface SupportPluginOptions {
   // Specify Support plugin options here
@@ -13,7 +14,20 @@ export default fp<SupportPluginOptions>(async (fastify, opts) => {
     return "hugs";
   });
 
-  fastify.decorate("save", {
+  fastify.register(fastifyRequestContext);
+
+  fastify.register(fastifyJwt, {
+    secret: "secret",
+    sign: {
+      expiresIn: "15 minutes",
+    },
+  });
+
+  fastify.decorate("generateJWT", (email: string) => {
+    return fastify.jwt.sign({ email });
+  });
+
+  fastify.decorate("store", {
     User: services.user,
   });
 });
@@ -21,8 +35,15 @@ export default fp<SupportPluginOptions>(async (fastify, opts) => {
 // When using .decorate you have to specify added properties for Typescript
 declare module "fastify" {
   export interface FastifyInstance {
-    save: {
+    generateJWT: (email: string) => string;
+    store: {
       User: typeof services.user;
     };
+  }
+}
+
+declare module "@fastify/request-context" {
+  interface RequestContextData {
+    user: typeof services.user;
   }
 }

@@ -23,3 +23,18 @@ export const TRegisterOpts: RouteShorthandOptions = {
 };
 
 export type TRegisterBody = Static<typeof TRegisterRequest>;
+
+const TLoginRequest = Type.Object({
+  email: Type.String({ format: "email" }),
+  password: Type.String(),
+});
+
+export const TLoginOpts: RouteShorthandOptions = {
+  schema: {
+    body: TLoginRequest,
+    response: {
+      200: TRegisterResponse,
+    },
+  },
+};
+export type TLoginBody = Static<typeof TLoginRequest>;

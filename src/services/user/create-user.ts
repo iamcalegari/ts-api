@@ -2,11 +2,9 @@ import { DbUsers } from "../../models";
 
 export const insertUser = async (
   document: {
-    nome: string;
-    idade: number;
+    name: string;
     email: string;
+    password: string;
   },
   options?: object
-) => {
-  return DbUsers.inserir(document, options);
-};
+) => DbUsers.inserir(document, options);
