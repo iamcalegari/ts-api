@@ -104,11 +104,8 @@ export class Model {
     return this.getCollection().findOne({ _id: documentId }, options);
   }
 
-  async remover(filter: object, options?: object) {
-    const { value: doc } = await this.getCollection().findOneAndDelete(
-      filter,
-      options
-    );
+  async remover(filter: object) {
+    const { value: doc } = await this.getCollection().findOneAndDelete(filter);
     return doc;
   }
 

@@ -1,6 +1,6 @@
 export default {
   db: {
-    url: "mongodb://alan:alanzao@localhost:27017/",
+    url: "mongodb://localhost:27017/",
     dbName: "api-test",
   },
 };

@@ -67,3 +67,5 @@ dist
 
 # environment variables
 .env
+
+yarn.lock
